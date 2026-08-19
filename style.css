@@ -1,3 +1,7 @@
+/* =========================================
+   PREMIUM BIRTHDAY COUNTDOWN
+   Made with love for Rachna — Nitin ♡
+   ========================================= */
 
 * {
     margin: 0;
@@ -5,10 +9,11 @@
     box-sizing: border-box;
 }
 
-
-/* ============================= */
-/* 🌌 MAIN BACKGROUND            */
-/* ============================= */
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
 
 body {
     min-height: 100vh;
@@ -17,272 +22,466 @@ body {
     justify-content: center;
     align-items: center;
 
-    font-family: Arial, sans-serif;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-    color: white;
+    color: #ffffff;
+
+    overflow-x: hidden;
 
     background:
         radial-gradient(
-            circle at 20% 20%,
+            circle at 15% 20%,
             rgba(255, 105, 180, 0.22),
-            transparent 30%
+            transparent 32%
         ),
-
         radial-gradient(
-            circle at 80% 80%,
-            rgba(138, 43, 226, 0.22),
-            transparent 30%
+            circle at 85% 75%,
+            rgba(138, 43, 226, 0.28),
+            transparent 35%
         ),
-
+        radial-gradient(
+            circle at 50% 110%,
+            rgba(255, 70, 150, 0.14),
+            transparent 40%
+        ),
         linear-gradient(
             135deg,
-            #0f0c29,
-            #302b63,
-            #24243e
+            #100b25 0%,
+            #21164b 45%,
+            #171333 100%
         );
-
-    overflow: hidden;
 }
 
 
-/* ============================= */
-/* ✨ MAIN CONTAINER              */
-/* ============================= */
+/* =========================================
+   BACKGROUND EFFECTS
+   ========================================= */
+
+.background-effects {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
 
 .container {
-    width: 90%;
-    max-width: 1000px;
+    position: relative;
+
+    width: min(92%, 950px);
+
+    padding: 45px 20px 90px;
 
     text-align: center;
 
-    position: relative;
-
     z-index: 2;
+
+    animation: pageAppear 1.4s ease forwards;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-/* ============================= */
-/* ✨ PREMIUM INTRO              */
-/* ============================= */
+/* =========================================
+   PREMIUM EYEBROW
+   ========================================= */
 
 .eyebrow {
-    font-size: 12px;
+    margin-bottom: 18px;
 
-    letter-spacing: 6px;
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    opacity: 0.65;
+    color: rgba(255, 255, 255, 0.7);
 
-    margin-bottom: 18px;
+    text-shadow:
+        0 0 15px rgba(255, 105, 180, 0.25);
+
+    animation: softFade 1.5s ease;
 }
 
 
-h1 {
-    font-size: clamp(38px, 6vw, 72px);
+/* =========================================
+   MAIN HEADING
+   ========================================= */
 
-    line-height: 1.05;
+h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 6vw, 70px);
+
+    line-height: 1.08;
 
     font-weight: 500;
 
     letter-spacing: -2px;
 
-    margin-bottom: 18px;
+    color: #ffffff;
 
     text-shadow:
-        0 0 20px rgba(255, 255, 255, 0.25),
-        0 0 50px rgba(255, 105, 180, 0.15);
+        0 0 15px rgba(255, 255, 255, 0.18),
+        0 0 35px rgba(255, 105, 180, 0.12);
 }
 
 
+/* =========================================
+   SUBTITLE
+   ========================================= */
+
 .subtitle {
+    margin-top: 22px;
+
     font-size: 17px;
-
-    letter-spacing: 1px;
-
-    opacity: 0.55;
 
     font-style: italic;
 
-    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    animation: softFade 2s ease;
 }
 
 
-/* ============================= */
-/* ⏳ COUNTDOWN                  */
-/* ============================= */
+/* =========================================
+   COUNTDOWN
+   ========================================= */
 
 #countdown {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     gap: 20px;
 
     flex-wrap: wrap;
 
-    margin-top: 45px;
+    margin-top: 48px;
 }
 
 
-/* ============================= */
-/* 💎 GLASS TIME BOX             */
-/* ============================= */
+/* =========================================
+   TIME BOX
+   ========================================= */
 
 .time-box {
+    position: relative;
+
     width: 155px;
 
-    padding: 30px 18px;
+    min-height: 145px;
 
-    background: rgba(255, 255, 255, 0.055);
+    padding: 25px 15px;
 
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
 
-    border-radius: 24px;
+    flex-direction: column;
 
-    backdrop-filter: blur(20px);
+    justify-content: center;
 
-    -webkit-backdrop-filter: blur(20px);
+    align-items: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.11),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.35),
-
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.12);
+        0 18px 45px rgba(0, 0, 0, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+        inset 0 0 25px rgba(255, 255, 255, 0.025);
 
     transition:
-        transform 0.4s ease,
-        background 0.4s ease,
-        border-color 0.4s ease;
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 
 .time-box:hover {
     transform: translateY(-8px);
 
-    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 182, 220, 0.45);
 
-    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.32),
+        0 0 25px rgba(255, 105, 180, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 
-/* ============================= */
-/* 🔢 COUNTDOWN NUMBERS          */
-/* ============================= */
+/* Number */
 
 .time-box span {
     display: block;
 
     font-size: 52px;
 
-    font-weight: 500;
+    line-height: 1;
 
-    letter-spacing: -2px;
+    font-weight: 300;
+
+    letter-spacing: -1px;
+
+    color: #ffffff;
 
     text-shadow:
-        0 0 15px rgba(255, 255, 255, 0.35);
+        0 0 15px rgba(255, 255, 255, 0.35),
+        0 0 30px rgba(255, 105, 180, 0.08);
 }
 
+
+/* Label */
 
 .time-box small {
     display: block;
 
-    margin-top: 12px;
+    margin-top: 15px;
 
-    font-size: 10px;
+    font-size: 9px;
 
-    letter-spacing: 3px;
+    font-weight: 500;
+
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    opacity: 0.5;
+    color: rgba(255, 255, 255, 0.58);
 }
 
 
-/* ============================= */
-/* ♡ PREMIUM DIVIDER             */
-/* ============================= */
+/* =========================================
+   DIVIDER
+   ========================================= */
 
 .divider {
+    width: min(460px, 75%);
+
+    margin: 48px auto 0;
+
     display: flex;
 
     align-items: center;
 
     justify-content: center;
 
-    gap: 15px;
+    gap: 18px;
 
-    margin: 40px auto 10px;
-
-    opacity: 0.6;
+    color: rgba(255, 182, 220, 0.75);
 
     font-size: 18px;
 }
 
-
 .divider span {
-    width: 100px;
-
     height: 1px;
+
+    flex: 1;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.3)
+            rgba(255, 255, 255, 0.3),
+            transparent
         );
 }
 
 
-/* ============================= */
-/* 🎂 BIRTHDAY MESSAGE           */
-/* ============================= */
+/* =========================================
+   WAITING NOTE
+   ========================================= */
+
+.waiting-note {
+    margin-top: 25px;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   BIRTHDAY MESSAGE
+   ========================================= */
 
 #birthday-message {
     display: none;
 
-    margin-top: 40px;
+    max-width: 760px;
 
-    animation:
-        birthdayReveal 2s ease forwards;
+    margin: 55px auto 0;
+
+    padding: 40px 35px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+    animation: birthdayReveal 1.8s ease forwards;
 }
 
+
+/* =========================================
+   BIRTHDAY EYEBROW
+   ========================================= */
+
+.birthday-eyebrow {
+    margin-bottom: 18px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 182, 220, 0.75);
+}
+
+
+/* =========================================
+   BIRTHDAY TITLE
+   ========================================= */
 
 #birthday-message h2 {
-    font-size: clamp(40px, 7vw, 70px);
+    margin-bottom: 28px;
 
-    margin-bottom: 25px;
+    font-size: clamp(38px, 5vw, 58px);
 
-    animation:
-        birthdayGlow 2s ease-in-out infinite alternate;
+    line-height: 1.12;
+
+    font-weight: 500;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.3),
+        0 0 35px rgba(255, 105, 180, 0.25);
+
+    animation: birthdayGlow 2.5s ease-in-out infinite alternate;
 }
 
 
+/* =========================================
+   MESSAGE TEXT
+   ========================================= */
+
 #message {
-    max-width: 700px;
+    max-width: 680px;
 
     margin: auto;
 
-    font-size: 20px;
+    font-size: 17px;
 
-    line-height: 1.8;
-
-    opacity: 0;
-
-    animation:
-        messageAppear 3s ease forwards;
-
-    animation-delay: 1s;
+    line-height: 2;
 
     white-space: pre-line;
+
+    color: rgba(255, 255, 255, 0.84);
+
+    text-align: center;
 }
 
 
-/* ============================= */
-/* 🎉 BIRTHDAY REVEAL            */
-/* ============================= */
+/* =========================================
+   FINAL NOTE
+   ========================================= */
+
+.final-note {
+    margin-top: 38px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-note span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 182, 220, 0.65);
+}
+
+.final-note p {
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   BIRTHDAY ANIMATIONS
+   ========================================= */
 
 @keyframes birthdayReveal {
 
@@ -290,23 +489,11 @@ h1 {
         opacity: 0;
 
         transform:
-            scale(0.7)
-            translateY(30px);
+            scale(0.92)
+            translateY(25px);
 
-        filter: blur(10px);
+        filter: blur(8px);
     }
-
-
-    60% {
-        opacity: 1;
-
-        transform:
-            scale(1.05)
-            translateY(0);
-
-        filter: blur(0);
-    }
-
 
     100% {
         opacity: 1;
@@ -320,105 +507,47 @@ h1 {
 }
 
 
-/* ============================= */
-/* ✨ BIRTHDAY GLOW              */
-/* ============================= */
-
 @keyframes birthdayGlow {
 
     from {
-
         text-shadow:
-            0 0 10px
-            rgba(255, 255, 255, 0.4);
+            0 0 10px rgba(255, 255, 255, 0.2);
     }
-
 
     to {
-
         text-shadow:
-
-            0 0 20px
-            rgba(255, 105, 180, 0.8),
-
-            0 0 40px
-            rgba(255, 105, 180, 0.5);
+            0 0 18px rgba(255, 105, 180, 0.55),
+            0 0 40px rgba(255, 105, 180, 0.2);
     }
 }
 
 
-/* ============================= */
-/* ❤️ MESSAGE APPEAR             */
-/* ============================= */
-
-@keyframes messageAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(25px);
-    }
-
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* ============================= */
-/* ❤️ FLOATING HEARTS            */
-/* ============================= */
-
-.background-effects {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
+/* =========================================
+   FLOATING HEARTS
+   ========================================= */
 
 .heart {
-
     position: absolute;
 
-    bottom: -50px;
+    bottom: -60px;
 
     font-size: 20px;
 
     opacity: 0;
 
-    animation:
-        floatHeart linear forwards;
-
     filter:
         drop-shadow(
             0 0 8px
-            rgba(255, 105, 180, 0.7)
+            rgba(255, 105, 180, 0.6)
         );
+
+    animation: floatHeart linear forwards;
 }
 
 
 @keyframes floatHeart {
 
     0% {
-
         transform:
             translateY(0)
             translateX(0)
@@ -428,29 +557,23 @@ h1 {
         opacity: 0;
     }
 
-
     10% {
-
         opacity: 0.7;
     }
 
-
     50% {
-
         transform:
             translateY(-50vh)
-            translateX(40px)
-            rotate(15deg)
+            translateX(35px)
+            rotate(12deg)
             scale(1);
     }
 
-
     100% {
-
         transform:
             translateY(-115vh)
-            translateX(-40px)
-            rotate(-20deg)
+            translateX(-35px)
+            rotate(-15deg)
             scale(0.8);
 
         opacity: 0;
@@ -458,149 +581,227 @@ h1 {
 }
 
 
-/* ============================= */
-/* ✨ PARTICLES                  */
-/* ============================= */
+/* =========================================
+   PARTICLES
+   ========================================= */
 
 .particle {
-
     position: absolute;
 
     width: 3px;
-
     height: 3px;
 
     border-radius: 50%;
 
-    background: white;
+    background: rgba(255, 255, 255, 0.8);
 
     opacity: 0;
 
-    animation:
-        particleFloat linear infinite;
-
     box-shadow:
-        0 0 8px
-        rgba(255, 255, 255, 0.8);
+        0 0 8px rgba(255, 255, 255, 0.7);
+
+    animation: particleFloat linear infinite;
 }
 
 
 @keyframes particleFloat {
 
     0% {
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
 
         opacity: 0;
     }
 
-
     20% {
-
-        opacity: 0.6;
+        opacity: 0.55;
     }
-
 
     50% {
-
-        opacity: 0.3;
+        opacity: 0.25;
     }
-
 
     80% {
-
-        opacity: 0.6;
+        opacity: 0.55;
     }
 
-
     100% {
-
-        transform:
-            translateY(-100vh);
+        transform: translateY(-100vh);
 
         opacity: 0;
     }
 }
 
 
-/* ============================= */
-/* 📱 MOBILE RESPONSIVE          */
-/* ============================= */
+/* =========================================
+   PREMIUM SIGNATURE
+   ========================================= */
+
+.signature {
+    position: fixed;
+
+    left: 50%;
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    animation: signatureReveal 2.5s ease forwards;
+}
+
+
+.signature span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+.signature strong {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.2),
+        0 0 22px rgba(255, 105, 180, 0.15);
+}
+
+
+@keyframes signatureReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
 
 @media (max-width: 600px) {
 
     .container {
-        width: 94%;
+        padding-top: 35px;
+        padding-bottom: 80px;
     }
-
 
     .eyebrow {
-        font-size: 9px;
+        font-size: 8px;
 
-        letter-spacing: 4px;
+        letter-spacing: 3px;
     }
 
-
     h1 {
-        font-size: 38px;
+        font-size: 39px;
 
         letter-spacing: -1px;
     }
 
-
     .subtitle {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-
     #countdown {
-        gap: 12px;
+        gap: 10px;
 
         margin-top: 35px;
     }
 
-
     .time-box {
-
         width: 135px;
 
-        padding: 22px 10px;
+        min-height: 125px;
+
+        padding: 20px 10px;
 
         border-radius: 20px;
     }
 
-
     .time-box span {
-
         font-size: 42px;
     }
 
-
     .time-box small {
+        font-size: 8px;
 
-        font-size: 9px;
-
-        letter-spacing: 2px;
+        letter-spacing: 3px;
     }
 
-
-    .divider span {
-
-        width: 60px;
+    .divider {
+        margin-top: 35px;
     }
 
+    #birthday-message {
+        margin-top: 40px;
+
+        padding: 30px 20px;
+
+        border-radius: 24px;
+    }
 
     #birthday-message h2 {
-
-        font-size: 40px;
+        font-size: 38px;
     }
 
-
     #message {
+        font-size: 15px;
 
-        font-size: 17px;
+        line-height: 1.85;
+    }
 
-        line-height: 1.7;
+    .final-note p {
+        font-size: 14px;
+    }
+
+    .signature {
+        bottom: 13px;
+    }
+
+    .signature span {
+        font-size: 7px;
+
+        letter-spacing: 3px;
+    }
+
+    .signature strong {
+        font-size: 11px;
+
+        letter-spacing: 2px;
     }
 }
