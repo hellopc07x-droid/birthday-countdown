@@ -1,107 +1,264 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+/* ============================= */
+/* 🌌 MAIN BACKGROUND            */
+/* ============================= */
+
 body {
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
     font-family: Arial, sans-serif;
+
     color: white;
 
     background:
-        radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.25), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.25), transparent 30%),
-        linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 105, 180, 0.22),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(138, 43, 226, 0.22),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0f0c29,
+            #302b63,
+            #24243e
+        );
 
     overflow: hidden;
 }
 
+
+/* ============================= */
+/* ✨ MAIN CONTAINER              */
+/* ============================= */
+
 .container {
     width: 90%;
-    max-width: 900px;
+    max-width: 1000px;
+
     text-align: center;
+
+    position: relative;
+
+    z-index: 2;
 }
+
+
+/* ============================= */
+/* ✨ PREMIUM INTRO              */
+/* ============================= */
+
+.eyebrow {
+    font-size: 12px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+
+    opacity: 0.65;
+
+    margin-bottom: 18px;
+}
+
 
 h1 {
-    font-size: 46px;
-    margin-bottom: 15px;
+    font-size: clamp(38px, 6vw, 72px);
 
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.25),
+        0 0 50px rgba(255, 105, 180, 0.15);
 }
+
+
+.subtitle {
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.55;
+
+    font-style: italic;
+
+    margin-bottom: 10px;
+}
+
+
+/* ============================= */
+/* ⏳ COUNTDOWN                  */
+/* ============================= */
 
 #countdown {
     display: flex;
+
     justify-content: center;
+
+    align-items: center;
+
     gap: 20px;
+
     flex-wrap: wrap;
 
     margin-top: 45px;
 }
 
+
+/* ============================= */
+/* 💎 GLASS TIME BOX             */
+/* ============================= */
+
 .time-box {
     width: 155px;
-    padding: 28px 15px;
 
-    background: rgba(255, 255, 255, 0.08);
+    padding: 30px 18px;
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.055);
 
-    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 
-    backdrop-filter: blur(15px);
+    border-radius: 24px;
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.35),
-        inset 0 0 20px rgba(255, 255, 255, 0.05);
+        0 20px 50px rgba(0, 0, 0, 0.35),
 
-    transition: transform 0.3s ease;
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.12);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        border-color 0.4s ease;
 }
+
 
 .time-box:hover {
-    transform: translateY(-8px) scale(1.03);
+    transform: translateY(-8px);
+
+    background: rgba(255, 255, 255, 0.09);
+
+    border-color: rgba(255, 255, 255, 0.25);
 }
+
+
+/* ============================= */
+/* 🔢 COUNTDOWN NUMBERS          */
+/* ============================= */
 
 .time-box span {
     display: block;
 
-    font-size: 55px;
-    font-weight: bold;
+    font-size: 52px;
 
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.35);
 }
+
 
 .time-box small {
     display: block;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
-    font-size: 15px;
+    font-size: 10px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    opacity: 0.7;
+    text-transform: uppercase;
+
+    opacity: 0.5;
 }
+
+
+/* ============================= */
+/* ♡ PREMIUM DIVIDER             */
+/* ============================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 40px auto 10px;
+
+    opacity: 0.6;
+
+    font-size: 18px;
+}
+
+
+.divider span {
+    width: 100px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3)
+        );
+}
+
+
+/* ============================= */
+/* 🎂 BIRTHDAY MESSAGE           */
+/* ============================= */
 
 #birthday-message {
     display: none;
 
     margin-top: 40px;
+
+    animation:
+        birthdayReveal 2s ease forwards;
 }
 
+
 #birthday-message h2 {
-    font-size: 60px;
+    font-size: clamp(40px, 7vw, 70px);
 
     margin-bottom: 25px;
 
-    text-shadow:
-        0 0 10px rgba(255, 255, 255, 0.5),
-        0 0 30px rgba(255, 105, 180, 0.6);
+    animation:
+        birthdayGlow 2s ease-in-out infinite alternate;
 }
+
 
 #message {
     max-width: 700px;
@@ -112,29 +269,338 @@ h1 {
 
     line-height: 1.8;
 
-    opacity: 0.9;
+    opacity: 0;
+
+    animation:
+        messageAppear 3s ease forwards;
+
+    animation-delay: 1s;
+
+    white-space: pre-line;
 }
+
+
+/* ============================= */
+/* 🎉 BIRTHDAY REVEAL            */
+/* ============================= */
+
+@keyframes birthdayReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.7)
+            translateY(30px);
+
+        filter: blur(10px);
+    }
+
+
+    60% {
+        opacity: 1;
+
+        transform:
+            scale(1.05)
+            translateY(0);
+
+        filter: blur(0);
+    }
+
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        filter: blur(0);
+    }
+}
+
+
+/* ============================= */
+/* ✨ BIRTHDAY GLOW              */
+/* ============================= */
+
+@keyframes birthdayGlow {
+
+    from {
+
+        text-shadow:
+            0 0 10px
+            rgba(255, 255, 255, 0.4);
+    }
+
+
+    to {
+
+        text-shadow:
+
+            0 0 20px
+            rgba(255, 105, 180, 0.8),
+
+            0 0 40px
+            rgba(255, 105, 180, 0.5);
+    }
+}
+
+
+/* ============================= */
+/* ❤️ MESSAGE APPEAR             */
+/* ============================= */
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ============================= */
+/* ❤️ FLOATING HEARTS            */
+/* ============================= */
+
+.background-effects {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.heart {
+
+    position: absolute;
+
+    bottom: -50px;
+
+    font-size: 20px;
+
+    opacity: 0;
+
+    animation:
+        floatHeart linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255, 105, 180, 0.7)
+        );
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity: 0;
+    }
+
+
+    10% {
+
+        opacity: 0.7;
+    }
+
+
+    50% {
+
+        transform:
+            translateY(-50vh)
+            translateX(40px)
+            rotate(15deg)
+            scale(1);
+    }
+
+
+    100% {
+
+        transform:
+            translateY(-115vh)
+            translateX(-40px)
+            rotate(-20deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+}
+
+
+/* ============================= */
+/* ✨ PARTICLES                  */
+/* ============================= */
+
+.particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0;
+
+    animation:
+        particleFloat linear infinite;
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 255, 255, 0.8);
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+
+        transform:
+            translateY(0);
+
+        opacity: 0;
+    }
+
+
+    20% {
+
+        opacity: 0.6;
+    }
+
+
+    50% {
+
+        opacity: 0.3;
+    }
+
+
+    80% {
+
+        opacity: 0.6;
+    }
+
+
+    100% {
+
+        transform:
+            translateY(-100vh);
+
+        opacity: 0;
+    }
+}
+
+
+/* ============================= */
+/* 📱 MOBILE RESPONSIVE          */
+/* ============================= */
 
 @media (max-width: 600px) {
 
-    h1 {
-        font-size: 32px;
+    .container {
+        width: 94%;
     }
+
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+
+    h1 {
+        font-size: 38px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+
+    #countdown {
+        gap: 12px;
+
+        margin-top: 35px;
+    }
+
 
     .time-box {
-        width: 120px;
-        padding: 20px 10px;
+
+        width: 135px;
+
+        padding: 22px 10px;
+
+        border-radius: 20px;
     }
+
 
     .time-box span {
-        font-size: 40px;
+
+        font-size: 42px;
     }
+
+
+    .time-box small {
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .divider span {
+
+        width: 60px;
+    }
+
 
     #birthday-message h2 {
+
         font-size: 40px;
     }
 
+
     #message {
+
         font-size: 17px;
+
+        line-height: 1.7;
     }
 }
