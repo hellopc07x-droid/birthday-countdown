@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #0f0c29,
+        #302b63,
+        #24243e
+    );
+
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    width: 150px;
+    padding: 25px 15px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.time-box span {
+    display: block;
+
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.time-box small {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+#birthday-message {
+    display: none;
+
+    margin-top: 50px;
+}
+
+#birthday-message h2 {
+    font-size: 55px;
+    margin-bottom: 25px;
+}
+
+#message {
+    max-width: 700px;
+    margin: auto;
+
+    font-size: 20px;
+    line-height: 1.8;
+
+    opacity: 0.9;
+}
