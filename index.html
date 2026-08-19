@@ -1,163 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>A Little Something For You ❤️</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <!-- ❤️ Floating hearts & particles -->
-    <div class="background-effects" id="backgroundEffects"></div>
+// 🎂 Birthday date and time
+const birthday = new Date("2026-08-24T00:00:00").getTime();
 
 
-    <!-- ✨ Main Content -->
-    <div class="container">
+// ⏳ Countdown
+function updateCountdown() {
 
-        <!-- Small elegant heading -->
-        <div class="eyebrow">
-            JUST FOR YOU, RACHNA
-        </div>
+    const now = new Date().getTime();
 
-
-        <!-- Main emotional hook -->
-        <h1>
-            Something Beautiful<br>
-            Is Coming ✨
-        </h1>
+    const difference = birthday - now;
 
 
-        <p class="subtitle">
-            Some moments are worth waiting for...
-        </p>
+    // 🎉 Birthday time reached
+    if (difference <= 0) {
+
+        document.getElementById("countdown").style.display = "none";
+
+        document.getElementById("birthday-message").style.display = "block";
+
+        return;
+    }
 
 
-        <!-- ⏳ Countdown -->
-        <div id="countdown">
+    // 🧮 Calculate remaining time
 
-            <div class="time-box">
-                <span id="days">00</span>
-                <small>Days</small>
-            </div>
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
 
-            <div class="time-box">
-                <span id="hours">00</span>
-                <small>Hours</small>
-            </div>
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
 
-            <div class="time-box">
-                <span id="minutes">00</span>
-                <small>Minutes</small>
-            </div>
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
 
-            <div class="time-box">
-                <span id="seconds">00</span>
-                <small>Seconds</small>
-            </div>
-
-        </div>
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
 
 
-        <!-- ♡ Elegant divider -->
-        <div class="divider">
-            <span></span>
-            ♡
-            <span></span>
-        </div>
+    // 📺 Display countdown
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
 
 
-        <!-- 🌙 Little message before birthday -->
-        <p class="waiting-note">
-            Until then... keep smiling. ❤️
-        </p>
+// 🚀 Start countdown
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
 
 
-        <!-- 🎂 Birthday Message -->
-        <div id="birthday-message">
 
-            <div class="birthday-eyebrow">
-                TODAY IS ALL ABOUT YOU
-            </div>
+// ❤️ FLOATING HEARTS
 
-            <h2>
-                Happy Birthday,<br>
-                My Beautiful Girl 🎂❤️
-            </h2>
+const backgroundEffects =
+    document.getElementById("backgroundEffects");
 
 
-            <p id="message">
+function createHeart() {
 
-                Happy Birthday, My Beautiful Girl ❤️✨
+    const heart = document.createElement("div");
 
-                Hey my beautiful girl,
+    heart.classList.add("heart");
 
-                aaj tumhara special day hai, aur main tumhara ye special
-                din kaise bhool sakta hoon? ❤️
+    const hearts = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💓"
+    ];
 
-                Main aaj ka din kabhi nahi bhoolunga, because it’s the day
-                someone so special came into this world. 💗
-
-                I just want you to know how precious you are to me.
-
-                Tumhari smile, tumhari cute si baatein, tumhara care karna —
-                everything about you is genuinely special to me. 🫶🏻
-
-                Aaj tumhara birthday hai, so meri wish hai ki tumhari life
-                hamesha khushiyon, pyaar, success aur beautiful moments se
-                bhari rahe. 🌸✨
-
-                Tum kabhi sad ho toh yaad rakhna, there will always be someone
-                who genuinely cares about you and wants to see you happy. ❤️
-
-                I hope this new year of your life brings you everything
-                your heart wishes for.
-
-                And honestly, I just want to keep seeing that beautiful
-                smile of yours again and again. 🥹💕
-
-                Happy Birthday once again, meri beautiful girl. 🎂❤️
-
-                Stay happy, stay safe, keep smiling...
-
-                and never forget how special you are. 🫶🏻✨
-
-            </p>
+    heart.textContent =
+        hearts[Math.floor(Math.random() * hearts.length)];
 
 
-            <!-- 🌸 Final personal line -->
-            <div class="final-note">
+    // Random horizontal position
 
-                <span>One more thing...</span>
-
-                <p>
-                    I hope you always remember that your smile
-                    is one of the most beautiful things in my world. ❤️
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+    heart.style.left =
+        Math.random() * 100 + "%";
 
 
-    <!-- ✍️ Minimal Premium Signature -->
-    <div class="signature">
+    // Random size
 
-        <span>made with love for Rachna</span>
-
-        <strong>— Nitin ♡</strong>
-
-    </div>
+    heart.style.fontSize =
+        (14 + Math.random() * 20) + "px";
 
 
-    <script src="script.js"></script>
+    // Random speed
 
-</body>
+    heart.style.animationDuration =
+        (7 + Math.random() * 6) + "s";
 
-</html>
+
+    backgroundEffects.appendChild(heart);
+
+
+    // Remove old heart
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 14000);
+}
+
+
+// Create hearts
+
+setInterval(createHeart, 1200);
+
+
+// Create some hearts immediately
+
+for (let i = 0; i < 6; i++) {
+
+    setTimeout(createHeart, i * 500);
+
+}
+
+
+
+// ✨ PARTICLES
+
+function createParticle() {
+
+    const particle =
+        document.createElement("div");
+
+    particle.classList.add("particle");
+
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+
+    particle.style.bottom =
+        Math.random() * 100 + "%";
+
+
+    const size =
+        2 + Math.random() * 3;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+
+    particle.style.animationDuration =
+        (8 + Math.random() * 10) + "s";
+
+
+    particle.style.animationDelay =
+        Math.random() * 5 + "s";
+
+
+    backgroundEffects.appendChild(particle);
+}
+
+
+// Create 45 particles
+
+for (let i = 0; i < 45; i++) {
+
+    createParticle();
+
+}
