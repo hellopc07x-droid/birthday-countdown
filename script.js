@@ -1,27 +1,46 @@
-// 🎂 Birthday date and time
-const birthday = new Date("2026-08-24T00:00:00").getTime();
+// ==========================================
+// 🎂 PREMIUM BIRTHDAY COUNTDOWN
+// ==========================================
+
+// ⚠️ Yahan birthday ki exact date & time set karo
+// Format: YYYY-MM-DDTHH:MM:SS
+const birthday = new Date("2026-08-19T18:15:00").getTime();
 
 
-// ⏳ Countdown
+// ==========================================
+// ⏳ COUNTDOWN
+// ==========================================
+
 function updateCountdown() {
 
-    const now = new Date().getTime();
-
+    const now = Date.now();
     const difference = birthday - now;
 
-
-    // 🎉 Birthday time reached
+    // 🎉 Birthday moment reached
     if (difference <= 0) {
 
-        document.getElementById("countdown").style.display = "none";
+        document.getElementById("countdown").classList.add("countdown-finished");
 
-        document.getElementById("birthday-message").style.display = "block";
+        setTimeout(() => {
+
+            document.getElementById("countdown").style.display = "none";
+
+            const message = document.getElementById("birthday-message");
+
+            message.style.display = "block";
+            message.classList.add("birthday-reveal");
+
+        }, 700);
+
+        clearInterval(countdownTimer);
+
+        createCelebration();
 
         return;
     }
 
 
-    // 🧮 Calculate remaining time
+    // 🧮 Calculate time
 
     const days = Math.floor(
         difference / (1000 * 60 * 60 * 24)
@@ -40,55 +59,80 @@ function updateCountdown() {
     );
 
 
-    // 📺 Display countdown
+    // 📺 Update numbers
 
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
+    updateNumber("days", days);
+    updateNumber("hours", hours);
+    updateNumber("minutes", minutes);
+    updateNumber("seconds", seconds);
 }
 
 
-// 🚀 Start countdown
+// ==========================================
+// ✨ PREMIUM NUMBER ANIMATION
+// ==========================================
 
+function updateNumber(id, value) {
+
+    const element = document.getElementById(id);
+
+    const newValue = String(value).padStart(2, "0");
+
+    if (element.textContent !== newValue) {
+
+        element.classList.remove("number-tick");
+
+        // Restart animation
+        void element.offsetWidth;
+
+        element.classList.add("number-tick");
+
+        element.textContent = newValue;
+    }
+}
+
+
+// Start immediately
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+
+// Update every second
+const countdownTimer = setInterval(updateCountdown, 1000);
 
 
-
+// ==========================================
 // ❤️ FLOATING HEARTS
+// ==========================================
 
 const backgroundEffects =
     document.getElementById("backgroundEffects");
 
 
+const heartTypes = [
+    "♡",
+    "♥",
+    "❤",
+    "💕",
+    "💗",
+    "💖"
+];
+
+
 function createHeart() {
+
+    if (!backgroundEffects) return;
 
     const heart = document.createElement("div");
 
-    heart.classList.add("heart");
-
-    const hearts = [
-        "❤️",
-        "💕",
-        "💗",
-        "💖",
-        "💓"
-    ];
+    heart.className = "heart";
 
     heart.textContent =
-        hearts[Math.floor(Math.random() * hearts.length)];
+        heartTypes[
+            Math.floor(Math.random() * heartTypes.length)
+        ];
 
 
-    // Random horizontal position
+    // Random position
 
     heart.style.left =
         Math.random() * 100 + "%";
@@ -97,63 +141,78 @@ function createHeart() {
     // Random size
 
     heart.style.fontSize =
-        (14 + Math.random() * 20) + "px";
+        (12 + Math.random() * 18) + "px";
 
 
-    // Random speed
+    // Random animation speed
 
     heart.style.animationDuration =
-        (7 + Math.random() * 6) + "s";
+        (8 + Math.random() * 7) + "s";
+
+
+    // Slight random delay
+
+    heart.style.animationDelay =
+        Math.random() * 2 + "s";
 
 
     backgroundEffects.appendChild(heart);
 
 
-    // Remove old heart
+    // Remove after animation
 
     setTimeout(() => {
 
         heart.remove();
 
-    }, 14000);
+    }, 17000);
 }
 
 
-// Create hearts
+// New heart every 1.5 seconds
 
-setInterval(createHeart, 1200);
+setInterval(createHeart, 1500);
 
 
-// Create some hearts immediately
+// Initial hearts
 
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 8; i++) {
 
-    setTimeout(createHeart, i * 500);
+    setTimeout(
+        createHeart,
+        i * 600
+    );
 
 }
 
 
-
-// ✨ PARTICLES
+// ==========================================
+// ✨ PREMIUM PARTICLES
+// ==========================================
 
 function createParticle() {
+
+    if (!backgroundEffects) return;
 
     const particle =
         document.createElement("div");
 
-    particle.classList.add("particle");
+    particle.className = "particle";
 
+
+    // Position
 
     particle.style.left =
         Math.random() * 100 + "%";
-
 
     particle.style.bottom =
         Math.random() * 100 + "%";
 
 
+    // Size
+
     const size =
-        2 + Math.random() * 3;
+        1.5 + Math.random() * 3;
 
     particle.style.width =
         size + "px";
@@ -162,22 +221,86 @@ function createParticle() {
         size + "px";
 
 
+    // Speed
+
     particle.style.animationDuration =
-        (8 + Math.random() * 10) + "s";
+        (9 + Math.random() * 12) + "s";
 
 
     particle.style.animationDelay =
-        Math.random() * 5 + "s";
+        Math.random() * 8 + "s";
 
 
     backgroundEffects.appendChild(particle);
 }
 
 
-// Create 45 particles
+// Create particles
 
-for (let i = 0; i < 45; i++) {
+for (let i = 0; i < 55; i++) {
 
     createParticle();
+
+}
+
+
+// ==========================================
+// 🌟 EXTRA SOFT GLITTER
+// ==========================================
+
+function createSparkle() {
+
+    if (!backgroundEffects) return;
+
+    const sparkle =
+        document.createElement("div");
+
+    sparkle.className = "sparkle";
+
+    sparkle.innerHTML = "✦";
+
+
+    sparkle.style.left =
+        Math.random() * 100 + "%";
+
+    sparkle.style.top =
+        Math.random() * 100 + "%";
+
+
+    sparkle.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
+
+
+    backgroundEffects.appendChild(sparkle);
+
+
+    setTimeout(() => {
+
+        sparkle.remove();
+
+    }, 6000);
+}
+
+
+// Occasional sparkle
+
+setInterval(createSparkle, 900);
+
+
+// ==========================================
+// 🎉 BIRTHDAY CELEBRATION
+// ==========================================
+
+function createCelebration() {
+
+    for (let i = 0; i < 25; i++) {
+
+        setTimeout(() => {
+
+            createHeart();
+
+        }, i * 120);
+
+    }
 
 }
