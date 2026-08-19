@@ -1,5 +1,5 @@
 // 🎂 Birthday date and time
-const birthday = new Date("2026-08-24T00:00:00").getTime();
+const birthday = new Date("2026-08-19T17:24:00").getTime();
 
 
 // ⏳ Countdown
