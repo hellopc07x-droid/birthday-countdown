@@ -4,7 +4,7 @@
 
 // ⚠️ Yahan birthday ki exact date & time set karo
 // Format: YYYY-MM-DDTHH:MM:SS
-const birthday = new Date("2026-08-24T18:15:00").getTime();
+const birthday = new Date("2026-08-24T00:00:00").getTime();
 
 
 // ==========================================
