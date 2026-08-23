@@ -4,7 +4,7 @@
 
 // ⚠️ Yahan birthday ki exact date & time set karo
 // Format: YYYY-MM-DDTHH:MM:SS
-const birthday = new Date("2026-08-24T00:00:00").getTime();
+const birthday = new Date("2026-08-23T06:58:00").getTime();
 
 
 // ==========================================
@@ -105,7 +105,7 @@ const countdownTimer = setInterval(updateCountdown, 1000);
 // ==========================================
 
 const backgroundEffects =
-    document.getElementById("backgroundEffects");
+    document.getElementById("backgroundEffects") || document.body;
 
 
 const heartTypes = [
@@ -132,28 +132,36 @@ function createHeart() {
         ];
 
 
-    // Random position
+    // Random position across full screen
+
+    heart.style.position = "fixed";
 
     heart.style.left =
-        Math.random() * 100 + "%";
+        Math.random() * 95 + "vw";
+
+    heart.style.bottom = "-30px";
+
+    heart.style.pointerEvents = "none";
+
+    heart.style.zIndex = "1";
 
 
     // Random size
 
     heart.style.fontSize =
-        (12 + Math.random() * 18) + "px";
+        (16 + Math.random() * 22) + "px";
 
 
-    // Random animation speed
+    // Faster & continuous animation speed
 
     heart.style.animationDuration =
-        (8 + Math.random() * 7) + "s";
+        (4 + Math.random() * 4) + "s";
 
 
     // Slight random delay
 
     heart.style.animationDelay =
-        Math.random() * 2 + "s";
+        Math.random() * 1 + "s";
 
 
     backgroundEffects.appendChild(heart);
@@ -165,22 +173,22 @@ function createHeart() {
 
         heart.remove();
 
-    }, 17000);
+    }, 9000);
 }
 
 
-// New heart every 1.5 seconds
+// Faster Heart Stream (Har 350ms par ek live heart pure background par)
 
-setInterval(createHeart, 1500);
+setInterval(createHeart, 350);
 
 
-// Initial hearts
+// Initial hearts (Screen turant bharne ke liye)
 
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 15; i++) {
 
     setTimeout(
         createHeart,
-        i * 600
+        i * 200
     );
 
 }
@@ -288,18 +296,130 @@ setInterval(createSparkle, 900);
 
 
 // ==========================================
+// 🎆 CANVAS FIRECRACKERS (PATAAKHE) SYSTEM
+// ==========================================
+
+const fireworkCanvas = document.createElement("canvas");
+fireworkCanvas.id = "fireworkCanvas";
+document.body.appendChild(fireworkCanvas);
+const fwCtx = fireworkCanvas.getContext("2d");
+
+function resizeFwCanvas() {
+    fireworkCanvas.width = window.innerWidth;
+    fireworkCanvas.height = window.innerHeight;
+}
+resizeFwCanvas();
+window.addEventListener("resize", resizeFwCanvas);
+
+fireworkCanvas.style.position = "fixed";
+fireworkCanvas.style.top = "0";
+fireworkCanvas.style.left = "0";
+fireworkCanvas.style.width = "100vw";
+fireworkCanvas.style.height = "100vh";
+fireworkCanvas.style.pointerEvents = "none";
+fireworkCanvas.style.zIndex = "99";
+
+let fwRockets = [];
+let fwParticles = [];
+let isFireworksActive = false;
+
+class FwRocket {
+    constructor() {
+        this.x = Math.random() * (fireworkCanvas.width * 0.8) + (fireworkCanvas.width * 0.1);
+        this.y = fireworkCanvas.height;
+        this.targetY = Math.random() * (fireworkCanvas.height * 0.4) + 80;
+        this.speed = 7 + Math.random() * 3;
+        this.color = `hsl(${Math.random() * 60 + 320}, 100%, 70%)`;
+    }
+    update() {
+        this.y -= this.speed;
+        if (this.y <= this.targetY) {
+            this.explode();
+            return false;
+        }
+        return true;
+    }
+    draw() {
+        fwCtx.beginPath();
+        fwCtx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+        fwCtx.fillStyle = this.color;
+        fwCtx.fill();
+    }
+    explode() {
+        for (let i = 0; i < 40; i++) {
+            fwParticles.push(new FwParticle(this.x, this.y, this.color));
+        }
+    }
+}
+
+class FwParticle {
+    constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 4 + 2;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.018 + 0.012;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.05;
+        this.alpha -= this.decay;
+        return this.alpha > 0;
+    }
+    draw() {
+        fwCtx.save();
+        fwCtx.globalAlpha = this.alpha;
+        fwCtx.beginPath();
+        fwCtx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        fwCtx.fillStyle = this.color;
+        fwCtx.fill();
+        fwCtx.restore();
+    }
+}
+
+function renderFirecrackers() {
+    fwCtx.clearRect(0, 0, fireworkCanvas.width, fireworkCanvas.height);
+
+    if (isFireworksActive && Math.random() < 0.08) {
+        fwRockets.push(new FwRocket());
+    }
+
+    fwRockets = fwRockets.filter(r => {
+        r.draw();
+        return r.update();
+    });
+
+    fwParticles = fwParticles.filter(p => {
+        p.draw();
+        return p.update();
+    });
+
+    requestAnimationFrame(renderFirecrackers);
+}
+renderFirecrackers();
+
+
+// ==========================================
 // 🎉 BIRTHDAY CELEBRATION
 // ==========================================
 
 function createCelebration() {
 
-    for (let i = 0; i < 25; i++) {
+    // Enable Medium Professional Firecrackers Burst
+    isFireworksActive = true;
+
+    for (let i = 0; i < 60; i++) {
 
         setTimeout(() => {
 
             createHeart();
 
-        }, i * 120);
+        }, i * 60);
 
     }
 
