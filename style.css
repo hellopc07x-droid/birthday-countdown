@@ -375,6 +375,7 @@ h1 {
 
     box-shadow:
         0 25px 70px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 105, 180, 0.15),
         inset 0 1px 1px rgba(255, 255, 255, 0.12);
 
     animation: birthdayReveal 1.8s ease forwards;
@@ -422,13 +423,15 @@ h1 {
 
 
 /* =========================================
-   MESSAGE TEXT
+   MESSAGE TEXT (ULTRA-PREMIUM GLOWING PARAGRAPH)
    ========================================= */
 
 #message {
     max-width: 680px;
 
-    margin: auto;
+    margin: 20px auto;
+
+    padding: 30px 25px;
 
     font-size: 17px;
 
@@ -436,9 +439,54 @@ h1 {
 
     white-space: pre-line;
 
-    color: rgba(255, 255, 255, 0.84);
+    color: #ffffff;
 
     text-align: center;
+
+    border-radius: 22px;
+
+    /* Subtle Glass Background */
+    background: rgba(255, 105, 180, 0.04);
+
+    /* Glass Effect Border */
+    border: 1px solid rgba(255, 182, 220, 0.35);
+
+    /* Side, Outer & Inner Premium Glows */
+    box-shadow: 
+        0 0 25px rgba(255, 105, 180, 0.25),
+        0 0 50px rgba(138, 43, 226, 0.2),
+        inset 0 0 20px rgba(255, 105, 180, 0.12);
+
+    /* Romantic Text Glow */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 105, 180, 0.4);
+
+    animation: paragraphGlowPulse 3s ease-in-out infinite alternate;
+
+    transition: all 0.4s ease-in-out;
+}
+
+/* Pulsing Side Glow Animation */
+@keyframes paragraphGlowPulse {
+    0% {
+        box-shadow: 
+            0 0 20px rgba(255, 105, 180, 0.2),
+            0 0 40px rgba(138, 43, 226, 0.15),
+            inset 0 0 15px rgba(255, 105, 180, 0.08);
+        border-color: rgba(255, 182, 220, 0.25);
+    }
+    100% {
+        box-shadow: 
+            0 0 35px rgba(255, 105, 180, 0.4),
+            0 0 65px rgba(138, 43, 226, 0.35),
+            inset 0 0 25px rgba(255, 105, 180, 0.2);
+        border-color: rgba(255, 182, 220, 0.55);
+    }
+}
+
+#message:hover {
+    transform: scale(1.01);
 }
 
 
@@ -774,7 +822,7 @@ h1 {
     #birthday-message {
         margin-top: 40px;
 
-        padding: 30px 20px;
+        padding: 30px 18px;
 
         border-radius: 24px;
     }
@@ -787,6 +835,8 @@ h1 {
         font-size: 15px;
 
         line-height: 1.85;
+
+        padding: 20px 15px;
     }
 
     .final-note p {
